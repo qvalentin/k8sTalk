@@ -1,0 +1,15 @@
+
+
+kubectl port-forward service/ff-fe-service 7080:80 && kubectl port-forward service/ff-rest-service 80:80
+
+
+kubectl port-forward service/filefighter-rest 80:80
+
+
+
+
+delete pod from replica set -> will be recreated (nice demo of self healing)
+
+
+
+curl -X GET "http://localhost:7080/health" -H "accept: */*"
