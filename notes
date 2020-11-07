@@ -1,9 +1,9 @@
 
 
-kubectl port-forward service/ff-fe-service 7080:80 && kubectl port-forward service/ff-rest-service 80:80
+kubectl port-forward service/ff-fe-service 8080:80
 
 
-kubectl port-forward service/filefighter-rest 80:80
+kubectl port-forward service/ff-rest-service 7080:80
 
 
 
