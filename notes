@@ -11,3 +11,13 @@ kubectl port-forward service/ff-rest-service 7080:80
 delete pod from replica set -> will be recreated (nice demo of self healing)
 
 
+
+
+I am going to talk about how you can deploy Docker containers with Kubernetes.
+You can find all the material, slides, sources etc on my GitHub:
+https://github.com/qvalentin/k8sTalk
+To view the slides in your browser, you need Jupyter Notebooks or open the Präsentation.slides.html document.
+
+
+The example code can be found here:
+https://github.com/FileFighter/k8sDeployment
