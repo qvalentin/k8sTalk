@@ -1,13 +1,64 @@
 <!DOCTYPE html>
-<!-- saved from url=(0041)file:///tmp/mozilla_valentin0/praesi.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
 
-<title>praesi</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-<script src="./praesi_files/require.min.js"></script>
-<script src="./praesi_files/jquery.min.js"></script>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
+<title>Präsentation slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -13021,206 +13072,145 @@ ul.typeahead-list  > li > a.pull-right {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+  font-size: 160%;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+div.text_cell.rendered .rendered_html {
+  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
+  overflow-y: hidden;
+}
+a.anchor-link {
+  /* There is still an anchor, we are only hidding it */
+  display: none;
+}
+.rendered_html p {
+  text-align: inherit;
+}
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="file:///tmp/mozilla_valentin0/custom.css">
+<link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="./praesi_files/latest.js"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config;executed=true">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --><script type="text/javascript" async="" src="./praesi_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
-.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
-.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
-.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
-.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
-</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-#MathJax_About.MathJax_MousePost {outline: none}
-.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-.MathJax_MenuItem {padding: 1px 2em; background: transparent}
-.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
-.MathJax_MenuActive .MathJax_MenuArrow {color: white}
-.MathJax_MenuArrow.RTL {left: .5em; right: auto}
-.MathJax_MenuCheck {position: absolute; left: .7em}
-.MathJax_MenuCheck.RTL {right: .7em; left: auto}
-.MathJax_MenuRadioCheck {position: absolute; left: .7em}
-.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
-.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
-.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
-.MathJax_MenuDisabled {color: GrayText}
-.MathJax_MenuActive {background-color: #606872; color: white}
-.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
-.MathJax_ContextMenu:focus {outline: none}
-.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
-#MathJax_AboutClose {top: .2em; right: .2em}
-.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
-.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
-.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
-.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
-.MathJax_MenuClose:hover span {background-color: #CCC!important}
-.MathJax_MenuClose:hover:focus {outline: none}
-</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
-</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
-.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
-</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
-#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-</style><style type="text/css">.MathJax_Preview {color: #888}
-#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
-#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
-.MathJax_Error {color: #CC0000; font-style: italic}
-</style><style type="text/css">.MJXp-script {font-size: .8em}
-.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
-.MJXp-bold {font-weight: bold}
-.MJXp-italic {font-style: italic}
-.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-largeop {font-size: 150%}
-.MJXp-largeop.MJXp-int {vertical-align: -.2em}
-.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
-.MJXp-display {display: block; text-align: center; margin: 1em 0}
-.MJXp-math span {display: inline-block}
-.MJXp-box {display: block!important; text-align: center}
-.MJXp-box:after {content: " "}
-.MJXp-rule {display: block!important; margin-top: .1em}
-.MJXp-char {display: block!important}
-.MJXp-mo {margin: 0 .15em}
-.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
-.MJXp-denom {display: inline-table!important; width: 100%}
-.MJXp-denom > * {display: table-row!important}
-.MJXp-surd {vertical-align: top}
-.MJXp-surd > * {display: block!important}
-.MJXp-script-box > *  {display: table!important; height: 50%}
-.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
-.MJXp-script-box > *:last-child > * {vertical-align: bottom}
-.MJXp-script-box > * > * > * {display: block!important}
-.MJXp-mphantom {visibility: hidden}
-.MJXp-munderover, .MJXp-munder {display: inline-table!important}
-.MJXp-over {display: inline-block!important; text-align: center}
-.MJXp-over > * {display: block!important}
-.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
-.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
-.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
-.MJXp-mtr {display: table-row!important}
-.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
-.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
-.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
-.MJXp-mlabeledtr {display: table-row!important}
-.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
-.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
-.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
-.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
-.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
-.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
-.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
-.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
-.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
-.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
-.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
-.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
-.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
-.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
-</style></head>
-<body style=""><div id="MathJax_Message" style="display: none;"></div>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="nt">body</span><span class="o">,</span><span class="nt">h1</span><span class="o">,</span><span class="nt">h2</span><span class="o">,</span><span class="nt">h3</span><span class="o">,</span><span class="nt">h4</span><span class="o">,</span><span class="nt">h5</span><span class="o">,</span><span class="nt">p</span><span class="o">,</span><span class="nt">div</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="s1">'ubuntu'</span> <span class="cp">!important</span><span class="p">}</span><span class="o">;</span>
-<span class="p">.</span><span class="nc">CodeMirror-line</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="s1">'Fira Sans Book'</span> <span class="cp">!important</span><span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
+</head>
 
 
-<div class="output_area">
-
-    <div class="prompt"></div>
+<body>
 
 
-
-<div class="output_html rendered_html output_subarea ">
-<style>
-body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
-.CodeMirror-line{font-family:'Fira Sans Book' !important}
-</style>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
+<div class="reveal">
+<div class="slides">
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Kubernetes</h1><p><img src="file:///tmp/mozilla_valentin0/assets/k8s-logo.png" alt="k8s-logo" style="width: 400px;"></p>
+<h1>Kubernetes</h1><p><img src="assets/k8s-logo.png" alt="k8s-logo" style="width: 400px;"/></p>
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Agenda">Agenda<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Agenda">¶</a></h3><ul>
+<h3 id="Agenda">Agenda<a class="anchor-link" href="#Agenda">&#182;</a></h3><ul>
 <li>Was ist Kubernetes?</li>
 <li>Grundlagen</li>
 <li>kubectl</li>
@@ -13229,14 +13219,14 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Was-ist-Kubernetes">Was ist Kubernetes<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Was-ist-Kubernetes">¶</a></h1>
+<h1 id="Was-ist-Kubernetes">Was ist Kubernetes<a class="anchor-link" href="#Was-ist-Kubernetes">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13246,7 +13236,7 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13256,7 +13246,7 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13266,63 +13256,63 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="verteilt">verteilt<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#verteilt">¶</a></h1><ul>
+<h1 id="verteilt">verteilt<a class="anchor-link" href="#verteilt">&#182;</a></h1><ul>
 <li>Kubernetes verteilt Deployments über verschiedene Rechner</li>
 <li>eine Instanz heißt Cluster und besteht aus mehreren Nodes (Rechner)</li>
 </ul>
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="zuverlässig-und-hochverfügbar">zuverlässig und hochverfügbar<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#zuverl%C3%A4ssig-und-hochverf%C3%BCgbar">¶</a></h1><ul>
+<h1 id="zuverl&#228;ssig-und-hochverf&#252;gbar">zuverl&#228;ssig und hochverf&#252;gbar<a class="anchor-link" href="#zuverl&#228;ssig-und-hochverf&#252;gbar">&#182;</a></h1><ul>
 <li>Kubernetes sorgt selbst dafür, dass Deployments laufen (self-healing)</li>
 <li>Deployments erfolgen ohne Downtime</li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="skalierbar">skalierbar<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#skalierbar">¶</a></h1><ul>
+<h1 id="skalierbar">skalierbar<a class="anchor-link" href="#skalierbar">&#182;</a></h1><ul>
 <li>Deployments können je nach Last automatisch skaliert werden</li>
 <li>Clusterresourcen können dynamisch erweitert werden (Nodes hinzufügen)</li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Kubernetes-und-Microservices">Kubernetes und Microservices<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Kubernetes-und-Microservices">¶</a></h1><p>K8s begünstigt Micorservice Architekturen<br>
+<h1 id="Kubernetes-und-Microservices">Kubernetes und Microservices<a class="anchor-link" href="#Kubernetes-und-Microservices">&#182;</a></h1><p>K8s begünstigt Micorservice Architekturen<br>
 -&gt; und somit agile Arbeitsweisen</p>
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Grundlagen">Grundlagen<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Grundlagen">¶</a></h1>
+<h1 id="Grundlagen">Grundlagen<a class="anchor-link" href="#Grundlagen">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1> Deklarative Konfiguration  <br>oder Infrastructure as code</h1>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13334,7 +13324,7 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13346,17 +13336,17 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="kubectl">kubectl<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#kubectl">¶</a></h1><ul>
+<h1 id="kubectl">kubectl<a class="anchor-link" href="#kubectl">&#182;</a></h1><ul>
 <li>cli für die K8s Api</li>
 </ul>
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
@@ -13379,8 +13369,8 @@ body,h1,h2,h3,h4,h5,p,div{font-family:'ubuntu' !important};
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:50:19Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.2", GitCommit:"f5743093fd1c663cb0cbc89748f730662345d44d", GitTreeState:"clean", BuildDate:"2020-09-16T13:32:58Z", GoVersion:"go1.15", Compiler:"gc", Platform:"linux/amd64"}
+<pre>Client Version: version.Info{Major:&#34;1&#34;, Minor:&#34;19&#34;, GitVersion:&#34;v1.19.3&#34;, GitCommit:&#34;1e11e4a2108024935ecfcb2912226cedeafd99df&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2020-10-14T12:50:19Z&#34;, GoVersion:&#34;go1.15.2&#34;, Compiler:&#34;gc&#34;, Platform:&#34;linux/amd64&#34;}
+Server Version: version.Info{Major:&#34;1&#34;, Minor:&#34;19&#34;, GitVersion:&#34;v1.19.2&#34;, GitCommit:&#34;f5743093fd1c663cb0cbc89748f730662345d44d&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2020-09-16T13:32:58Z&#34;, GoVersion:&#34;go1.15&#34;, Compiler:&#34;gc&#34;, Platform:&#34;linux/amd64&#34;}
 </pre>
 </div>
 </div>
@@ -13388,14 +13378,14 @@ Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.2", GitCom
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="lokaler-K8s-Cluster-mit-Minikube">lokaler K8s Cluster mit Minikube<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#lokaler-K8s-Cluster-mit-Minikube">¶</a></h1>
+<h1 id="lokaler-K8s-Cluster-mit-Minikube">lokaler K8s Cluster mit Minikube<a class="anchor-link" href="#lokaler-K8s-Cluster-mit-Minikube">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -13432,26 +13422,26 @@ kubeconfig: Configured
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ein-paar-Kubernetes-Resourcen">ein paar Kubernetes Resourcen<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#ein-paar-Kubernetes-Resourcen">¶</a></h1>
+<h1 id="ein-paar-Kubernetes-Resourcen">ein paar Kubernetes Resourcen<a class="anchor-link" href="#ein-paar-Kubernetes-Resourcen">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="file:///tmp/mozilla_valentin0/assets/ressources.png" style="max-height:90vh"></p>
+<p><img src="assets/ressources.png"  style="max-height:90vh"/></p>
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pod">Pod<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Pod">¶</a></h1><ul>
+<h1 id="Pod">Pod<a class="anchor-link" href="#Pod">&#182;</a></h1><ul>
 <li>enthält einen oder mehrer Container</li>
 <li>Conatainer teilen sich Netzwerk und eventuell Speicher</li>
 <li>kleinste deploybare Einheit</li>
@@ -13459,7 +13449,7 @@ kubeconfig: Configured
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
@@ -13494,7 +13484,7 @@ filefighter-rest-deployment-775cf944d7-zfdgs   1/1     Running   4          48m
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
@@ -13546,7 +13536,7 @@ Containers:
     Environment:
       MONGO_INITDB:                filefighter
       MONGO_INITDB_ROOT_USERNAME:  root
-      MONGO_INITDB_ROOT_PASSWORD:  &lt;set to the key 'password' in secret 'ff-secret'&gt;  Optional: false
+      MONGO_INITDB_ROOT_PASSWORD:  &lt;set to the key &#39;password&#39; in secret &#39;ff-secret&#39;&gt;  Optional: false
     Mounts:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-bqlrd (ro)
 Conditions:
@@ -13568,7 +13558,7 @@ Events:
   Type    Reason          Age   From     Message
   ----    ------          ----  ----     -------
   Normal  SandboxChanged  5s    kubelet  Pod sandbox changed, it will be killed and re-created.
-  Normal  Pulling         5s    kubelet  Pulling image "mongo:latest"
+  Normal  Pulling         5s    kubelet  Pulling image &#34;mongo:latest&#34;
 </pre>
 </div>
 </div>
@@ -13576,11 +13566,11 @@ Events:
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Deployment">Deployment<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Deployment">¶</a></h1><ul>
+<h1 id="Deployment">Deployment<a class="anchor-link" href="#Deployment">&#182;</a></h1><ul>
 <li>gibt den gewünschten Zustand eines Deployments an</li>
 <li>beschreibt Pods</li>
 <li>ermöglicht Sklarierung (ReplicaSets)</li>
@@ -13588,7 +13578,7 @@ Events:
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
@@ -13622,7 +13612,7 @@ filefighter-rest-deployment   1/1     1            1           2d3h
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
@@ -13665,7 +13655,7 @@ Pod Template:
     Environment:
       MONGO_INITDB:                filefighter
       MONGO_INITDB_ROOT_USERNAME:  root
-      MONGO_INITDB_ROOT_PASSWORD:  &lt;set to the key 'password' in secret 'ff-secret'&gt;  Optional: false
+      MONGO_INITDB_ROOT_PASSWORD:  &lt;set to the key &#39;password&#39; in secret &#39;ff-secret&#39;&gt;  Optional: false
     Mounts:                        &lt;none&gt;
   Volumes:                         &lt;none&gt;
 Conditions:
@@ -13683,11 +13673,11 @@ Events:          &lt;none&gt;
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Services">Services<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Services">¶</a></h1><ul>
+<h1 id="Services">Services<a class="anchor-link" href="#Services">&#182;</a></h1><ul>
 <li>Addressierung der Pods</li>
 <li>inklusive Loadbalancing</li>
 <li>ermöglicht z.B. Kommunikation zwischen Pods</li>
@@ -13695,15 +13685,15 @@ Events:          &lt;none&gt;
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="file:///tmp/mozilla_valentin0/assets/services.png" style="max-height:60vh"></p>
+<p><img src="assets/services.png"  style="max-height:60vh"/></p>
 
 </div>
 </div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
@@ -13738,11 +13728,11 @@ kubernetes        ClusterIP      10.96.0.1       &lt;none&gt;          443/TCP  
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Volumes">Volumes<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Volumes">¶</a></h1><ul>
+<h1 id="Volumes">Volumes<a class="anchor-link" href="#Volumes">&#182;</a></h1><ul>
 <li>da Container zustandlos sind müssen die Daten an anderer Stelle gespeichert werden</li>
 <li>können von Containern gemountet werden</li>
 <li>gibt verschiedene Volumetypen je nach Anwendungsfall</li>
@@ -13750,11 +13740,11 @@ kubernetes        ClusterIP      10.96.0.1       &lt;none&gt;          443/TCP  
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Secrets">Secrets<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Secrets">¶</a></h1><ul>
+<h1 id="Secrets">Secrets<a class="anchor-link" href="#Secrets">&#182;</a></h1><ul>
 <li>zum Speichern senitiver Daten</li>
 <li>werden in Pods eingebunden</li>
 <li>entweder als Datei oder als Umgebungsvariablen</li>
@@ -13762,7 +13752,7 @@ kubernetes        ClusterIP      10.96.0.1       &lt;none&gt;          443/TCP  
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -13793,30 +13783,30 @@ kubernetes        ClusterIP      10.96.0.1       &lt;none&gt;          443/TCP  
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Deployment-Beispiel">Deployment Beispiel<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Deployment-Beispiel">¶</a></h1>
+<h1 id="Deployment-Beispiel">Deployment Beispiel<a class="anchor-link" href="#Deployment-Beispiel">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="FileFighter">FileFighter<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#FileFighter">¶</a></h1><p><img src="file:///tmp/mozilla_valentin0/assets/ff-logo.png" alt="k8s-logo" style="max-width: 400px;"></p>
+<h1 id="FileFighter">FileFighter<a class="anchor-link" href="#FileFighter">&#182;</a></h1><p><img src="assets/ff-logo.png" alt="k8s-logo" style="max-width: 400px;"/></p>
 
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Architektur">Architektur<a class="anchor-link" href="file:///tmp/mozilla_valentin0/praesi.html#Architektur">¶</a></h1><p><img src="file:///tmp/mozilla_valentin0/assets/arch2.svg" alt="k8s-logo" style="width:1000px"></p>
+<h1 id="Architektur">Architektur<a class="anchor-link" href="#Architektur">&#182;</a></h1><p><img src="assets/arch2.svg" alt="k8s-logo" style="width:1000px"/></p>
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -13829,7 +13819,7 @@ kubernetes        ClusterIP      10.96.0.1       &lt;none&gt;          443/TCP  
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -13842,13 +13832,74 @@ kubernetes        ClusterIP      10.96.0.1       &lt;none&gt;          443/TCP  
 </div>
 </div>
 
+</div></section></section>
 </div>
-    </div>
-  </div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
+</body>
 
 
- 
-
-
-
-</body></html>
+</html>
