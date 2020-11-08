@@ -7,8 +7,9 @@ kubectl port-forward service/ff-rest-service 7080:80
 
 
 
+minikube service hello-kubernetes
 
-delete pod from replica set -> will be recreated (nice demo of self healing)
+
 
 
 
