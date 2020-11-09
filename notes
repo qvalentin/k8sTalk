@@ -10,15 +10,34 @@ kubectl port-forward service/ff-rest-service 7080:80
 minikube service hello-kubernetes
 
 
-
-
+Deployment of containerized Application with Kubernetes
 
 
 I am going to talk about how you can deploy Docker containers with Kubernetes.
+
+In case you want to prepare for the talk you can checkout the tutorial about minikube(https://minikube.sigs.k8s.io/docs/start/).
+This will explain how you can set up a Kubernetes cluster on your local machine.
+Installing minikube is not required for the presentation.
+
 You can find all the material, slides, sources etc on my GitHub:
 https://github.com/qvalentin/k8sTalk
-To view the slides in your browser, you need Jupyter Notebooks or open the Präsentation.slides.html document.
-
+To view the slides you will need Jupyter Notebooks or simply open the Präsentation.slides.html document.
 
 The example code can be found here:
 https://github.com/FileFighter/k8sDeployment
+
+
+As a workwork I want you to think about the following questions related to your SE project:
+Are you using Docker? If not, why?
+Are you using a microservice architecture?
+What parts of your application are scalable?
+How could you deploy your application with Kubernetes?
+
+
+
+
+Tags: Deployment Kubernetes Docker Containers DevOps Servers YAML
+
+
+
+
